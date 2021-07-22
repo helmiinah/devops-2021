@@ -1,0 +1,10 @@
+C:\Users\User1>docker run -d -it --name website ubuntu sh -c "echo 'Input website:'; read website; echo 'Searching..'; sleep 1; curl http://$website;"
+
+C:\Users\User1>docker exec -it website bash
+
+root@5f0a32b276ed:/# apt-get update; apt-get install curl
+root@5f0a32b276ed:/# exit
+
+C:\Users\User1>docker stop website
+
+C:\Users\User1>docker container start -i website
