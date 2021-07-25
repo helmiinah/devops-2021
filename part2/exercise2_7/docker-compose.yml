@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+
+  kurkkumopo-backend:
+    image: kurkkumopo-backend
+    ports:
+      - 5000:5000
+    depends_on:
+      - kurkkumopo-training
+    volumes:
+      - model:/src/model
+    container_name: kurkkumopo-backend
+      
+  kurkkumopo-frontend:
+    image: kurkkumopo-frontend
+    ports:
+      - 3000:3000
+    container_name: kurkkumopo-frontend
+      
+  kurkkumopo-training:
+    # Kept getting OSError when trying to build the training image locally, so building straight from GitHub instead.
+    build: https://github.com/docker-hy/ml-kurkkumopo-training.git
+    image: kurkkumopo-training
+    container_name: kurkkumopo-training
+    volumes:
+      - imgs:/src/imgs
+      - model:/src/model
+      
+volumes:
+  imgs:
+  model:
