@@ -1,0 +1,2 @@
+I changed the environment variable ENV REACT_APP_BACKEND_URL in the Dockerfile of the frontend to http://localhost/api and 
+added environment variable API_URL=http://localhost/api to the frontend and backend services in docker-compose.
